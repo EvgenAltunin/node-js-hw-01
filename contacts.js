@@ -33,14 +33,12 @@ async function getContactById(contactId) {
  * @param {string} name - name of the new contact.
  * @param {string} email - email of the new contact.
  * @param {string} phone - phone number of the new contact 
- * @returns {string} message if new contact were added successfully.
  */
 async function addContact(name, email, phone) {
   const contacts = await listContacts();
   const newContact = { id: shortid.generate(), name, email, phone };
   contacts.push(newContact);
   await fs.writeFile(contactsPath, JSON.stringify(contacts));
-  return "OK"
 }
 
 /**
